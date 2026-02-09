@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VibeFrame 🎬✨
 
 AI-powered video frame extraction that captures the perfect moment matching your vibe.
@@ -229,3 +230,6 @@ For questions or feedback, please open an issue on GitHub.
 ---
 
 Made with ❤️ and AI
+=======
+# Snowstorm
+>>>>>>> 9ee0c84bfb2478e445fa3884a54b9fa8113450f8
