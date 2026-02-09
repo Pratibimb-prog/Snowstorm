@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+opencv-python
+numpy
+Pillow
+torch
+torchvision
+ftfy
+regex
+tqdm
+git+https://github.com/openai/CLIP.git
+ultralytics
+mediapipe
