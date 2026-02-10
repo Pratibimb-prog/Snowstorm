@@ -5,7 +5,7 @@ import { VibeSelector } from './components/VibeSelector';
 import { Gallery } from './components/Gallery';
 import { SmartPlayer } from './components/SmartPlayer';
 import { LandingPage } from './components/LandingPage';
-import { Loader2, Film, Camera, Sparkles, FolderOpen } from 'lucide-react';
+import { Loader2, Film, Sparkles, FolderOpen } from 'lucide-react';
 
 interface FrameScores {
   total: number;

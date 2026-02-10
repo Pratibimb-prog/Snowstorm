@@ -1,5 +1,6 @@
-import { useState, useRef, DragEvent, ChangeEvent } from 'react';
-import { Upload, AlertCircle, FileVideo, Sparkles } from 'lucide-react';
+import { useState, useRef } from 'react';
+import type { DragEvent, ChangeEvent } from 'react';
+import { Upload, AlertCircle, Sparkles } from 'lucide-react';
 
 interface VideoUploaderProps {
     onFileSelect: (file: File) => void;

@@ -17,11 +17,23 @@ from core.scorer import FrameScorer
 
 app = FastAPI(title="VibeFrame API", description="AI-powered video frame extraction")
 
-# CORS configuration
+# CORS configuration - support both local development and production
 origins = [
     "http://localhost:5173",
     "http://localhost:3000",
 ]
+
+# Add production frontend URL from environment variable
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    origins.append(frontend_url)
+    print(f"Added production frontend URL to CORS: {frontend_url}")
+
+# Also allow common deployment patterns
+origins.extend([
+    "https://*.vercel.app",
+    "https://*.onrender.com",
+])
 
 app.add_middleware(
     CORSMiddleware,
@@ -200,4 +212,6 @@ async def analyze_video(
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    # Use PORT from environment variable (required for Render)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

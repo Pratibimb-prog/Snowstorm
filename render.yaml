@@ -1,0 +1,35 @@
+services:
+  # Backend API Service
+  - type: web
+    name: vibeframe-backend
+    env: python
+    region: oregon  # Choose: oregon, frankfurt, singapore
+    plan: starter  # or 'free' (spins down after 15min inactivity)
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://vibeframe.vercel.app  # Update with your Vercel URL
+    disk:
+      name: vibeframe-storage
+      mountPath: /opt/render/project/src/uploads
+      sizeGB: 10  # For storing uploaded videos and extracted frames
+
+  # Frontend Static Site (Optional - use if not deploying to Vercel)
+  # - type: web
+  #   name: vibeframe-frontend
+  #   env: static
+  #   buildCommand: "cd frontend && npm install && npm run build"
+  #   staticPublishPath: frontend/dist
+  #   routes:
+  #     - type: rewrite
+  #       source: /*
+  #       destination: /index.html
+  #   envVars:
+  #     - key: VITE_API_URL
+  #       value: https://vibeframe-backend.onrender.com
